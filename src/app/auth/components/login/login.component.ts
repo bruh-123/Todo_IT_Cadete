@@ -12,7 +12,6 @@ import { AlertService } from '../../../shared/services/alert.service';
 export class LoginComponent implements OnInit {
   hide: boolean = true;
   isLoading: boolean = false;
-  submitted: boolean = false;
   loginForm: FormGroup;
 
   constructor(
@@ -30,8 +29,8 @@ export class LoginComponent implements OnInit {
     });
   }
   ingresar() {
-    this.submitted = true;
     if (this.loginForm.invalid) {
+      this.alerService.failure('Email y contraseña requeridas');
       return;
     }
     this.isLoading = true;

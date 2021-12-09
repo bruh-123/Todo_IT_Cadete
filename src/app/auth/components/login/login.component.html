@@ -1,10 +1,10 @@
 <app-spinner *ngIf="isLoading"></app-spinner>
-<mat-card *ngIf="!isLoading">
-  <form [formGroup]="loginForm" (ngSubmit)="ingresar()">
+<mat-card *ngIf="!isLoading" class="login-form">
+  <form class="form" [formGroup]="loginForm" (ngSubmit)="ingresar()">
     <img
       src="../../../../assets/delivery2.png"
       alt="delivery picture"
-      width="200rem"
+      width="50%"
     />
     <h1>Login</h1>
     <!-- ------EMAIL -->
@@ -12,7 +12,6 @@
       <mat-label>Email</mat-label>
       <input matInput autocomplete="off" formControlName="email" />
       <mat-icon matSuffix>alternate_email</mat-icon>
-      <!-- <mat-error *ngIf="submitted ">{{getErrorMessage()}}</mat-error> -->
     </mat-form-field>
     <!-- ---------PASSWORD -->
     <mat-form-field class="field" appearance="fill">

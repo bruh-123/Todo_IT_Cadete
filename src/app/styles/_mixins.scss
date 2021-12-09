@@ -1,1 +1,22 @@
 @use "./variables" as *;
+@use "./functions" as *;
+
+
+@mixin flex-center($direction: row) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+}
+
+@mixin main {
+  min-height: 100%;
+  background-color: $third;
+}
+
+@mixin btn-first {
+  background-color: $first;
+    &:hover{
+      background-color: clr(first,ligth);
+    }
+}

@@ -1,5 +1,16 @@
-@use '../../../styles/functions' as *;
+@use "../../../styles/styles-dir" as *;
 
-p{
-   background-color: clr(first);
+.login-form {
+  @include flex-center(column);
+  background-color: $second;
+  width: 17rem;
+}
+.form{
+   @include flex-center(column)
+}
+.field{
+   width:70%;
+}
+.btn{
+   @include btn-first;
 }
