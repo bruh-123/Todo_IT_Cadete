@@ -6,6 +6,7 @@ import { AuthComponent } from './auth.component';
 import { PagesAuthModule } from './pages/pages-auth.module';
 import { ComponentsAuthModule } from './components/components-auth.module';
 import { MaterialAuthModule } from './material-auth.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { MaterialAuthModule } from './material-auth.module';
     AuthRoutingModule,
     PagesAuthModule,
     ComponentsAuthModule,
-    MaterialAuthModule
+    MaterialAuthModule,
+    SharedModule
   ]
 })
 export class AuthModule { }
