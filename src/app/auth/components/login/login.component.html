@@ -1,4 +1,5 @@
-<mat-card>
+<app-spinner *ngIf="isLoading"></app-spinner>
+<mat-card *ngIf="!isLoading">
   <form [formGroup]="loginForm" (ngSubmit)="ingresar()">
     <img
       src="../../../../assets/delivery2.png"
