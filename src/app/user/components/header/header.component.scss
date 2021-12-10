@@ -1,0 +1,24 @@
+@use "../../../styles/styles-dir" as *;
+
+.toolbar {
+  background-color: clr(third);
+  height: 15%;
+  display: flex;
+  justify-content: space-between;
+}
+.logo {
+  height: 100%;
+}
+
+.menu-btn {
+  @include btn-second;
+}
+
+.menu {
+  background-color: clr(second);
+}
+
+.link {
+  @include btn-second;
+  text-align: center;
+}

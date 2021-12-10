@@ -1,1 +1,24 @@
-<mat-toolbar></mat-toolbar>
+<mat-toolbar class="toolbar">
+  <img class="logo" src="../../../../assets/logo2.png" alt="Todo IT logo" />
+  <button
+    [matMenuTriggerFor]="menu"
+    class="menu-btn"
+    mat-raised-button
+    aria-label="menu button"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu" class="menu">
+    <a
+      [routerLink]="['/viajes']"
+      routerLinkActive="router-link-active"
+      mat-menu-item
+      class="link"
+      >Viajes</a
+    >
+    <a [routerLink]="['/historial']" mat-menu-item class="link">Historial</a>
+    <a (click)="logout()" mat-menu-item class="link"
+      >Cerrar Sesión</a
+    >
+  </mat-menu>
+</mat-toolbar>

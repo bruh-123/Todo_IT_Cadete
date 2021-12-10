@@ -3,12 +3,21 @@ import { CommonModule } from '@angular/common';
 import { MaterialUserModule } from '../material-user.module';
 import { ComponentsSharedModule } from '../../shared/components/components-shared.module';
 import { HeaderComponent } from './header/header.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [
-    HeaderComponent
+  declarations: [HeaderComponent],
+  imports: [
+    CommonModule,
+    MaterialUserModule,
+    ComponentsSharedModule,
+    RouterModule,
   ],
-  imports: [CommonModule, MaterialUserModule, ComponentsSharedModule],
-  exports: [MaterialUserModule, ComponentsSharedModule,HeaderComponent],
+  exports: [
+    MaterialUserModule,
+    ComponentsSharedModule,
+    HeaderComponent,
+    RouterModule,
+  ],
 })
 export class ComponentsUserModule {}
