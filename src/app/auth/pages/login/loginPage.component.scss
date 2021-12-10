@@ -2,5 +2,6 @@
 
 main{
    @include main;
-   @include flex-center(column);
+   @include flex-center;
+   justify-content: flex-start;
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ValidateService } from '../../services/validate.service';
+import { ValidateService } from '../../../shared/services/validate.service';
 import { AlertService } from '../../../shared/services/alert.service';
 
 @Component({
@@ -20,9 +20,6 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private alerService: AlertService
   ) {
-    if (this.validateService.currentUser) {
-      this.router.navigateByUrl('user/home');
-    }
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.email, Validators.required]],
       password: ['', Validators.required],

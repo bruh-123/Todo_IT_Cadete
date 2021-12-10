@@ -1,23 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { User } from '../../shared/interfaces/users';
-import { Loged } from '../../shared/interfaces/loged';
-import { AlertService } from '../../shared/services/alert.service';
+import { User } from '../interfaces/users';
+import { Loged } from '../interfaces/loged';
+import { AlertService } from './alert.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ValidateService {
-  public currentUser: Loged = JSON.parse(localStorage.getItem('userLoged')!);
   private loged!: Loged;
-  isCadete: boolean = false;
 
   get logedUser() {
     return { ...this.loged };
   }
   constructor(private http: HttpClient, private alertService: AlertService) {
-    console.log(this.currentUser);
   }
 
   login(email: string, password: string): Observable<User> {
@@ -40,5 +37,10 @@ export class ValidateService {
           }
         })
       );
+  }
+
+  isLoged(): boolean {
+    let currentUser = JSON.parse(localStorage.getItem('userLoged')!);
+    return currentUser ? true : false;
   }
 }

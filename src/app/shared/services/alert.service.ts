@@ -11,7 +11,7 @@ export class AlertService {
     this.snackbar.open(error, 'OK', {
       horizontalPosition: 'center',
       verticalPosition: 'bottom',
-      duration: 10000,
+      duration: 5000,
       panelClass: ['red-snackbar'],
     });
   }
@@ -19,7 +19,7 @@ export class AlertService {
     this.snackbar.open(message, 'OK', {
       horizontalPosition: 'center',
       verticalPosition: 'bottom',
-      duration: 10000,
+      duration: 5000,
       panelClass: ['green-snackbar'],
     });
   }
