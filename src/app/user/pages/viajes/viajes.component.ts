@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-viajes',
   templateUrl: './viajes.component.html',
-  styleUrls: ['./viajes.component.scss']
+  styleUrls: ['./viajes.component.scss'],
 })
 export class ViajesComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

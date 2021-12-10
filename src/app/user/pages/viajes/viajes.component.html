@@ -1,2 +1,14 @@
 <app-header></app-header>
-<p>viajes works!</p>
+<main>
+  <mat-tab-group mat-align-tabs="center">
+    <mat-tab label="Disponibles">
+      <ng-template matTabContent> Content 1 - Loaded: </ng-template>
+    </mat-tab>
+    <mat-tab label="Aceptados">
+      <ng-template matTabContent> Content 2 - Loaded: </ng-template>
+    </mat-tab>
+    <mat-tab label="En Curso">
+      <ng-template matTabContent> Content 3 - Loaded: </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</main>
