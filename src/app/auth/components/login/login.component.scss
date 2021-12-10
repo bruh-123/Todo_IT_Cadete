@@ -1,16 +1,16 @@
 @use "../../../styles/styles-dir" as *;
 
 .login-form {
-  @include flex-center(column);
+  @include flex-center;
   background-color: $second;
   width: 17rem;
 }
-.form{
-   @include flex-center(column)
+.form {
+  @include flex-center;
 }
-.field{
-   width:70%;
+.field {
+  width: 70%;
 }
-.btn{
-   @include btn-first;
+.btn {
+  @include btn-first;
 }

@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { User } from '../../shared/interfaces/users';
 import { Loged } from '../../shared/interfaces/loged';
+import { AlertService } from '../../shared/services/alert.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,10 +11,12 @@ import { Loged } from '../../shared/interfaces/loged';
 export class ValidateService {
   public currentUser: Loged = JSON.parse(localStorage.getItem('userLoged')!);
   private loged!: Loged;
+  isCadete: boolean = false;
+
   get logedUser() {
     return { ...this.loged };
   }
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private alertService: AlertService) {
     console.log(this.currentUser);
   }
 
@@ -22,15 +25,19 @@ export class ValidateService {
       .get<User>('api/Login' + '?email=' + email + '&password=' + password)
       .pipe(
         tap((resp) => {
-          this.loged = {
-            id: resp.id,
-            fullname: resp.fullName,
-            email: resp.email,
-            cellPhone: resp.cellPhone,
-            vehicle: resp.vehicle,
-            rol: resp.rol,
-          };
-          localStorage.setItem('userLoged', JSON.stringify(this.loged));
+          if (resp.rol.id == 2) {
+            this.loged = {
+              id: resp.id,
+              fullname: resp.fullName,
+              email: resp.email,
+              cellPhone: resp.cellPhone,
+              vehicle: resp.vehicle,
+              rol: resp.rol,
+            };
+            localStorage.setItem('userLoged', JSON.stringify(this.loged));
+          } else {
+            throw { error: 'Esta app es sólo para cadetes' };
+          }
         })
       );
   }

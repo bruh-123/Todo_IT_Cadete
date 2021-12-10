@@ -2,7 +2,7 @@
 @use "./functions" as *;
 
 
-@mixin flex-center($direction: row) {
+@mixin flex-center($direction: column) {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,7 +16,15 @@
 
 @mixin btn-first {
   background-color: $first;
+  color: white;
     &:hover{
       background-color: clr(first,ligth);
+    }
+}
+@mixin btn-second {
+  background-color: $second;
+  color: clr(first,dark);
+    &:hover{
+      background-color: clr(second,dark);
     }
 }

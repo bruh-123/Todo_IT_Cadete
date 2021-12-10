@@ -1,0 +1,21 @@
+@use "../../../styles/styles-dir" as *;
+
+main{
+   @include main;
+   @include flex-center;
+   justify-content:flex-start
+}
+
+.logo{
+   margin-bottom: 2rem;  
+}
+
+.links{
+   @include flex-center;
+   li{
+     margin-bottom: 1.5rem; 
+   }
+      .btn{
+         @include btn-second;
+      }
+}

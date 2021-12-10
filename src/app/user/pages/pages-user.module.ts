@@ -4,17 +4,13 @@ import { HomeComponent } from './home/home.component';
 import { ViajesComponent } from './viajes/viajes.component';
 import { HistorialComponent } from './historial/historial.component';
 import { ComponentsUserModule } from '../components/components-user.module';
+import { RouterModule } from '@angular/router';
 
 
 
 @NgModule({
-  declarations: [
-    HomeComponent,
-    ViajesComponent,
-    HistorialComponent
-  ],
-  imports: [
-    CommonModule,ComponentsUserModule
-  ]
+  declarations: [HomeComponent, ViajesComponent, HistorialComponent],
+  imports: [CommonModule, ComponentsUserModule, RouterModule],
+  exports:[]
 })
-export class PagesUserModule { }
+export class PagesUserModule {}

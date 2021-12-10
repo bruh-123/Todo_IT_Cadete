@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     private alerService: AlertService
   ) {
     if (this.validateService.currentUser) {
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('user/home');
     }
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.email, Validators.required]],
