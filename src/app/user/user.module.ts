@@ -7,6 +7,7 @@ import { PagesUserModule } from './pages/pages-user.module';
 import { ComponentsUserModule } from './components/components-user.module';
 import { MaterialUserModule } from './material-user.module';
 import { SharedModule } from '../shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { SharedModule } from '../shared/shared.module';
     PagesUserModule,
     ComponentsUserModule,
     MaterialUserModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ]
 })
 export class UserModule { }

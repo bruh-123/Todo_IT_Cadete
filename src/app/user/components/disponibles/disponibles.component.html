@@ -2,13 +2,26 @@
   <mat-card>
     <ul>
       <li>
-        <p>Dirección: {{ viaje.travelEquipmentDTOs[0].operator.address }}</p>
+        <p>
+          Dirección:
+          {{ viaje.travelEquipmentDTOs[0].equipment.cliente.address }}
+        </p>
       </li>
       <li>
         <p>Hora: {{ viaje.creationDate | date: "shortTime" }}</p>
       </li>
       <li>
-        <p>Equipo: {{ viaje.travelEquipmentDTOs[0].equipment.mark }}</p>
+        <p>
+          Equipo:
+          {{
+            viaje.travelEquipmentDTOs[0].equipment.mark +
+              " " +
+              viaje.travelEquipmentDTOs[0].equipment.model
+          }}
+        </p>
+      </li>
+      <li>
+        <p>Estado de viaje: {{ viaje.lastStatusTravel }}</p>
       </li>
     </ul>
     <mat-card-actions>
