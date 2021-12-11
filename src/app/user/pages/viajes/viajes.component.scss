@@ -4,3 +4,9 @@ main {
   @include main;
 }
 
+.container{
+  @include flex-center;
+  width: 80%;
+  margin: 0 auto;
+  background-color: blue;
+}

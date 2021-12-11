@@ -1,0 +1,18 @@
+<ng-container *ngFor="let viaje of viajes">
+  <mat-card>
+    <ul>
+      <li>
+        <p>Dirección: {{ viaje.travelEquipmentDTOs[0].operator.address }}</p>
+      </li>
+      <li>
+        <p>Hora: {{ viaje.creationDate | date: "shortTime" }}</p>
+      </li>
+      <li>
+        <p>Equipo: {{ viaje.travelEquipmentDTOs[0].equipment.mark }}</p>
+      </li>
+    </ul>
+    <mat-card-actions>
+      <button mat-raised-button color="primary">aceptar</button>
+    </mat-card-actions>
+  </mat-card>
+</ng-container>

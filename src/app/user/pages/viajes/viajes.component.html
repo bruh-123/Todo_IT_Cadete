@@ -2,13 +2,28 @@
 <main>
   <mat-tab-group mat-align-tabs="center">
     <mat-tab label="Disponibles">
-      <ng-template matTabContent> Content 1 - Loaded: </ng-template>
+      <ng-template matTabContent>
+        <div class="container">
+          <app-spinner *ngIf="isLoading"></app-spinner>
+          <app-disponibles *ngIf="!isLoading" [viajes]="viajesDisponibles"></app-disponibles>
+        </div>
+      </ng-template>
     </mat-tab>
     <mat-tab label="Aceptados">
-      <ng-template matTabContent> Content 2 - Loaded: </ng-template>
+      <ng-template matTabContent>
+        <div class="container">
+          <app-spinner *ngIf="isLoading"></app-spinner>
+          <app-aceptados *ngIf="!isLoading"></app-aceptados>
+        </div>
+      </ng-template>
     </mat-tab>
     <mat-tab label="En Curso">
-      <ng-template matTabContent> Content 3 - Loaded: </ng-template>
+      <ng-template matTabContent>
+        <div class="container">
+          <app-spinner *ngIf="isLoading"></app-spinner>
+          <app-en-curso *ngIf="!isLoading"></app-en-curso>
+        </div>
+      </ng-template>
     </mat-tab>
   </mat-tab-group>
 </main>

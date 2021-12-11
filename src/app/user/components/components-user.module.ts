@@ -4,9 +4,17 @@ import { MaterialUserModule } from '../material-user.module';
 import { ComponentsSharedModule } from '../../shared/components/components-shared.module';
 import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
+import { DisponiblesComponent } from './disponibles/disponibles.component';
+import { AceptadosComponent } from './aceptados/aceptados.component';
+import { EnCursoComponent } from './en-curso/en-curso.component';
 
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [
+    HeaderComponent,
+    DisponiblesComponent,
+    AceptadosComponent,
+    EnCursoComponent,
+  ],
   imports: [
     CommonModule,
     MaterialUserModule,
@@ -18,6 +26,9 @@ import { RouterModule } from '@angular/router';
     ComponentsSharedModule,
     HeaderComponent,
     RouterModule,
+    DisponiblesComponent,
+    AceptadosComponent,
+    EnCursoComponent,
   ],
 })
 export class ComponentsUserModule {}
