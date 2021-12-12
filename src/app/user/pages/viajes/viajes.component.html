@@ -25,14 +25,5 @@
         </div>
       </ng-template>
     </mat-tab>
-    <mat-tab label="En Curso">
-      <ng-template matTabContent>
-        <div class="container">
-          <app-spinner *ngIf="isLoading"></app-spinner>
-          <!-- VIAJES EN CURSO -->
-          <app-en-curso *ngIf="!isLoading"></app-en-curso>
-        </div>
-      </ng-template>
-    </mat-tab>
   </mat-tab-group>
 </main>
