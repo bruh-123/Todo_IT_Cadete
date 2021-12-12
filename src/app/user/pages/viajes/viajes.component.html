@@ -5,7 +5,11 @@
       <ng-template matTabContent>
         <div class="container">
           <app-spinner *ngIf="isLoading"></app-spinner>
-          <app-disponibles *ngIf="!isLoading" [viajes]="viajesDisponibles"></app-disponibles>
+          <!-- VIAJES DISPONIBLES -->
+          <app-disponibles
+            *ngIf="!isLoading"
+            [viajes]="viajesDisponibles1"
+          ></app-disponibles>
         </div>
       </ng-template>
     </mat-tab>
@@ -13,7 +17,11 @@
       <ng-template matTabContent>
         <div class="container">
           <app-spinner *ngIf="isLoading"></app-spinner>
-          <app-aceptados *ngIf="!isLoading"></app-aceptados>
+          <!-- VIAJES ACEPTADOS -->
+          <app-aceptados
+            *ngIf="!isLoading"
+            [viajes]="viajesAceptados"
+          ></app-aceptados>
         </div>
       </ng-template>
     </mat-tab>
@@ -21,6 +29,7 @@
       <ng-template matTabContent>
         <div class="container">
           <app-spinner *ngIf="isLoading"></app-spinner>
+          <!-- VIAJES EN CURSO -->
           <app-en-curso *ngIf="!isLoading"></app-en-curso>
         </div>
       </ng-template>

@@ -1,1 +1,31 @@
-<p>aceptados works!</p>
+<ng-container *ngFor="let viaje of viajes">
+  <mat-card>
+    <ul>
+      <li>
+        <p>
+          Dirección:
+          {{ viaje.travelEquipmentDTOs[0].equipment.cliente.address }}
+        </p>
+      </li>
+      <li>
+        <p>Hora: {{ viaje.creationDate | date: "shortTime" }}</p>
+      </li>
+      <li>
+        <p>
+          Equipo:
+          {{
+            viaje.travelEquipmentDTOs[0].equipment.mark +
+              " " +
+              viaje.travelEquipmentDTOs[0].equipment.model
+          }}
+        </p>
+      </li>
+      <li>
+        <p>Estado de viaje: {{ viaje.lastStatusTravel }}</p>
+      </li>
+    </ul>
+    <mat-card-actions>
+      <button mat-raised-button color="primary">aceptar</button>
+    </mat-card-actions>
+  </mat-card>
+</ng-container>

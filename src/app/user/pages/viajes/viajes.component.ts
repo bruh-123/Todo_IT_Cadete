@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Viaje } from '../../interfaces/viaje';
 import { ViajesService } from '../../services/viajes.service';
-import { DataViaje } from '../../interfaces/dataViaje';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-viajes',
@@ -10,12 +10,29 @@ import { DataViaje } from '../../interfaces/dataViaje';
 })
 export class ViajesComponent implements OnInit {
   isLoading: boolean = false;
-  viajesDisponibles: Viaje[] = [];
-  constructor(private viajesService: ViajesService) {}
+  viajesDisponibles1!: Viaje[];
+  viajesAceptados: Viaje[] = [];
+  constructor(
+    private viajesService: ViajesService,
+    private alertService: AlertService
+  ) {}
 
   ngOnInit(): void {
-    this.viajesService.getDisponibles().subscribe((resp) => {
-      this.viajesDisponibles=[...resp[0],...resp[1]]
+    this.viajesService.refreshViajes$.subscribe(() => {
+      this.getDisponibles();
+    });
+    this.getDisponibles();
+  }
+
+  getDisponibles() {
+    this.viajesService.getDisponibles().subscribe({
+      next: (resp) => {
+        this.viajesDisponibles1 = [...resp[0], ...resp[1]];
+      },
+      error: (e) => {
+        console.log(e.error);
+        this.alertService.failure(e.error);
+      },
     });
   }
 }

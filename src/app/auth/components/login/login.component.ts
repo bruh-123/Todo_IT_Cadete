@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ValidateService } from '../../../shared/services/validate.service';
 import { AlertService } from '../../../shared/services/alert.service';
 
@@ -9,7 +9,7 @@ import { AlertService } from '../../../shared/services/alert.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   hide: boolean = true;
   isLoading: boolean = false;
   loginForm: FormGroup;
@@ -46,5 +46,4 @@ export class LoginComponent implements OnInit {
         },
       });
   }
-  ngOnInit(): void {}
 }
