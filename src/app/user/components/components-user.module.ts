@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { DisponiblesComponent } from './disponibles/disponibles.component';
 import { AceptadosComponent } from './aceptados/aceptados.component';
 import { FooterComponent } from './footer/footer.component';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { FooterComponent } from './footer/footer.component';
     CommonModule,
     MaterialUserModule,
     ComponentsSharedModule,
-    RouterModule,
+    RouterModule,SharedModule
   ],
   exports: [
     MaterialUserModule,
