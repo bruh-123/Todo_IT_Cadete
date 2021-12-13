@@ -23,9 +23,35 @@
       <li>
         <p>Estado de viaje: {{ viaje.lastStatusTravel }}</p>
       </li>
+      <li>
+        <p>ID: {{ viaje.id }}</p>
+      </li>
     </ul>
     <mat-card-actions>
-      <button mat-raised-button color="primary">aceptar</button>
+      <button
+        *ngIf="viaje.lastStatusTravel == 2 || viaje.lastStatusTravel == 6"
+        mat-raised-button
+        color="warn"
+        (click)="rechazarViaje(viaje.id, viaje.lastStatusTravel)"
+      >
+        rechazar
+      </button>
+      <button
+        *ngIf="viaje.lastStatusTravel == 2 || viaje.lastStatusTravel == 6"
+        mat-raised-button
+        color="primary"
+        (click)="retirar(viaje.id,viaje.lastStatusTravel)"
+      >
+        retirar
+      </button>
+      <button
+        *ngIf="viaje.lastStatusTravel == 3 || viaje.lastStatusTravel == 7"
+        mat-raised-button
+        color="primary"
+        (click)="finalizar(viaje.id,viaje.lastStatusTravel)"
+      >
+        finalizar
+      </button>
     </mat-card-actions>
   </mat-card>
 </ng-container>

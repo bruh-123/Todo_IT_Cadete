@@ -3,7 +3,7 @@ export interface Dto {
   id: number;
   operationDate: string;
   observation: string | null;
-  cadete: Cadete | null;
+  cadete: Cadete;
   operator: {
     id: number;
     email: string;

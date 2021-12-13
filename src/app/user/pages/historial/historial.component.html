@@ -1,9 +1,33 @@
 <app-header></app-header>
-<mat-card>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, qui
-    repudiandae nihil tenetur rerum, eaque dolore consequuntur rem, ipsum quasi
-    fugit? Eos a et sit ratione ad dolorem at asperiores, optio quo totam
-    veniam.
-  </p>
-</mat-card>
+<ng-container *ngFor="let viaje of viajes">
+  <mat-card>
+    <ul>
+      <li>
+        <p>
+          Dirección:
+          {{ viaje.travelEquipmentDTOs[0].equipment.cliente.address }}
+        </p>
+      </li>
+      <li>
+        <p>Hora: {{ viaje.creationDate | date: "shortTime" }}</p>
+      </li>
+      <li>
+        <p>
+          Equipo:
+          {{
+            viaje.travelEquipmentDTOs[0].equipment.mark +
+              " " +
+              viaje.travelEquipmentDTOs[0].equipment.model
+          }}
+        </p>
+      </li>
+      <li>
+        <p>Estado de viaje: {{ viaje.lastStatusTravel }}</p>
+      </li>
+      <li>
+        <p>ID: {{ viaje.id }}</p>
+      </li>
+    </ul>
+  </mat-card>
+</ng-container>
+
