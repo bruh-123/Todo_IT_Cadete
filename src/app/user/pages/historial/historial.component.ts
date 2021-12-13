@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Viaje } from '../../interfaces/viaje';
 import { ViajesService } from '../../services/viajes.service';
+import { sortDate } from '../../../shared/utils/sortDate';
 
 @Component({
   selector: 'app-historial',
@@ -33,6 +34,7 @@ export class HistorialComponent implements OnInit {
           }
           return false;
         });
+        this.viajes = sortDate(this.viajes);
         this.isLoading = false;
       },
     });

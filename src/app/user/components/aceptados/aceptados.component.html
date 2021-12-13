@@ -1,57 +1,55 @@
 <app-spinner *ngIf="isLoading" [diameter]="100"></app-spinner>
 <ng-container *ngIf="!isLoading">
-  <mat-card *ngFor="let viaje of viajes">
+  <mat-card *ngFor="let v of viajes" >
     <ul>
       <li>
         <p>
           Dirección:
-          {{ viaje.travelEquipmentDTOs[0].equipment.cliente.address }}
+          {{ v.travelEquipmentDTOs[0].equipment.cliente.address }}
         </p>
       </li>
       <li>
-        <p>Hora: {{ viaje.creationDate | date: "shortTime" }}</p>
+        <p>Hora: {{ v.travelEquipmentDTOs[v.travelEquipmentDTOs.length-1].operationDate | date: "shortTime" }}</p>
       </li>
       <li>
         <p>
           Equipo:
           {{
-            viaje.travelEquipmentDTOs[0].equipment.mark +
+            v.travelEquipmentDTOs[0].equipment.mark +
               " " +
-              viaje.travelEquipmentDTOs[0].equipment.model
+              v.travelEquipmentDTOs[0].equipment.model
           }}
         </p>
       </li>
       <li>
-        <p>Estado de viaje: {{ viaje.lastStatusTravel }}</p>
+        <p>Estado de viaje: {{ v.lastStatusTravel }}</p>
       </li>
       <li>
-        <p>ID: {{ viaje.id }}</p>
+        <p>ID: {{ v.id }}</p>
       </li>
     </ul>
     <mat-card-actions>
       <button
-        *ngIf="viaje.lastStatusTravel == 2 || viaje.lastStatusTravel == 6"
+        *ngIf="v.lastStatusTravel == 2 || v.lastStatusTravel == 6"
         mat-raised-button
         color="warn"
-        [disabled]="loading"
-        [class.spinner]="loading"
-        (click)="rechazarViaje(viaje.id, viaje.lastStatusTravel)"
+        (click)="rechazarViaje(v.id, v.lastStatusTravel)"
       >
         rechazar
       </button>
       <button
-        *ngIf="viaje.lastStatusTravel == 2 || viaje.lastStatusTravel == 6"
+        *ngIf="v.lastStatusTravel == 2 || v.lastStatusTravel == 6"
         mat-raised-button
         color="primary"
-        (click)="avanzar(viaje.id, viaje.lastStatusTravel)"
+        (click)="avanzar(v.id, v.lastStatusTravel)"
       >
         retirar
       </button>
       <button
-        *ngIf="viaje.lastStatusTravel == 3 || viaje.lastStatusTravel == 7"
+        *ngIf="v.lastStatusTravel == 3 || v.lastStatusTravel == 7"
         mat-raised-button
         color="primary"
-        (click)="avanzar(viaje.id, viaje.lastStatusTravel)"
+        (click)="avanzar(v.id, v.lastStatusTravel)"
       >
         finalizar
       </button>

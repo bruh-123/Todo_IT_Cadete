@@ -12,7 +12,6 @@ import { tap } from 'rxjs';
 export class AceptadosComponent implements OnInit {
   @Input() viajes: Viaje[] = [];
   isLoading: boolean = false;
-  loading: boolean = false;
 
   constructor(
     private alertService: AlertService,
@@ -33,19 +32,7 @@ export class AceptadosComponent implements OnInit {
         },
       });
   }
-
-  // retirar(id: number, status: number) {
-  //   this.viajesService.postViaje(id, status+1).pipe(tap(()=>this.viajesService.refreshAceptados$.next())).subscribe({
-  //   next: (resp) => {
-  //     console.log(resp);
-  //     this.alertService.success('Retiraste el equipo!');
-  //   },
-  //   error: (e) => {
-  //     console.log(e.error);
-  //     this.alertService.failure(e.error);
-  //   },
-  // });
-  // }
+  
   avanzar(id: number, status: number) {
     this.viajesService
       .postViaje(id, status + 1)
@@ -83,7 +70,9 @@ export class AceptadosComponent implements OnInit {
           return true;
         }
         return false;
-      });
+      }).sort((a, b) => {
+        return b.lastStatusTravel - a.lastStatusTravel;
+      })
       this.isLoading = false;
     });
   }

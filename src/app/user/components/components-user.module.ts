@@ -6,12 +6,14 @@ import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
 import { DisponiblesComponent } from './disponibles/disponibles.component';
 import { AceptadosComponent } from './aceptados/aceptados.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     DisponiblesComponent,
     AceptadosComponent,
+    FooterComponent,
   ],
   imports: [
     CommonModule,
@@ -26,6 +28,7 @@ import { AceptadosComponent } from './aceptados/aceptados.component';
     RouterModule,
     DisponiblesComponent,
     AceptadosComponent,
+    FooterComponent,
   ],
 })
 export class ComponentsUserModule {}
