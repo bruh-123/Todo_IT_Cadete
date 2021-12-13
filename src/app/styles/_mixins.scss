@@ -28,3 +28,7 @@
       background-color: clr(second,dark);
     }
 }
+
+@mixin font-weight {
+  font-weight: 500;
+}

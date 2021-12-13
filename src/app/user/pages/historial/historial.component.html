@@ -3,7 +3,7 @@
   <h1 class="title">Historial de viajes</h1>
   <app-spinner *ngIf="isLoading" [diameter]="100"></app-spinner>
   <ng-container *ngIf="!isLoading">
-    <mat-card *ngFor="let v of viajes">
+    <mat-card [ngClass]="{'pendiente':v.lastStatusTravel==8,'confirmado':v.lastStatusTravel==9||v.lastStatusTravel==4}" *ngFor="let v of viajes">
       <ul>
         <li>
           <p>
@@ -13,10 +13,10 @@
         </li>
         <li>
           <p>
-            Hora:
+            Fecha:
             {{
               v.travelEquipmentDTOs[v.travelEquipmentDTOs.length - 1]
-                .operationDate
+                .operationDate | date:'short'
             }}
           </p>
         </li>

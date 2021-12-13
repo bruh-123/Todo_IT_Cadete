@@ -12,3 +12,13 @@ mat-card{
    font-weight: 600;
    color: darken(clr(first,dark),5);
 }
+
+.pendiente{
+   background-color: rgb(179, 141, 71);
+}
+.confirmado{
+   background-color: rgb(72, 110, 72);
+}
+p{
+   @include font-weight;
+}

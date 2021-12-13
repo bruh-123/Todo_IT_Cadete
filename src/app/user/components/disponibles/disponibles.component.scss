@@ -9,3 +9,6 @@ mat-card-actions{
 .btn{
    @include btn-first;
 }
+p{
+   @include font-weight;
+}
