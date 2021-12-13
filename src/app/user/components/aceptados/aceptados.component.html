@@ -40,7 +40,7 @@
       <button
         *ngIf="v.lastStatusTravel == 2 || v.lastStatusTravel == 6"
         mat-raised-button
-        color="primary"
+        class="btn"
         (click)="avanzar(v.id, v.lastStatusTravel)"
       >
         retirar
@@ -48,7 +48,7 @@
       <button
         *ngIf="v.lastStatusTravel == 3 || v.lastStatusTravel == 7"
         mat-raised-button
-        color="primary"
+        class="btn"
         (click)="avanzar(v.id, v.lastStatusTravel)"
       >
         finalizar

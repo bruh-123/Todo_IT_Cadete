@@ -1,5 +1,14 @@
 @use "../../../styles/styles-dir"as *;
 
-main{
+.main{
+   @include flex-center;
+   justify-content: flex-start;
    @include main;
+}
+mat-card{
+   margin-bottom: 1rem;
+}
+.title{
+   font-weight: 600;
+   color: darken(clr(first,dark),5);
 }

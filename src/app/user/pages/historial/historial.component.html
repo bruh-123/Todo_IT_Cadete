@@ -1,6 +1,7 @@
 <app-header></app-header>
-<app-spinner *ngIf="isLoading" [diameter]="100"></app-spinner>
-<main>
+<main class="main">
+  <h1 class="title">Historial de viajes</h1>
+  <app-spinner *ngIf="isLoading" [diameter]="100"></app-spinner>
   <ng-container *ngIf="!isLoading">
     <mat-card *ngFor="let v of viajes">
       <ul>
@@ -30,7 +31,10 @@
           </p>
         </li>
         <li>
-          <p>Estado de viaje: {{ v.lastStatusTravel }}</p>
+          <p>
+            Estado de viaje:
+            {{ v.lastStatusTravel | number | estadoViajesPipe }}
+          </p>
         </li>
         <li>
           <p>ID: {{ v.id }}</p>

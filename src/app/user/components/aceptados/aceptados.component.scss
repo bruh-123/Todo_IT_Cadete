@@ -1,0 +1,11 @@
+@use "../../../styles/styles-dir" as *;
+
+mat-card{
+   margin-bottom: 1rem;
+}
+mat-card-actions{
+   @include flex-center(row)
+}
+.btn{
+   @include btn-first;
+}

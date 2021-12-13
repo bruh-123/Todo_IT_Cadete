@@ -1,6 +1,6 @@
 @use "../../../styles/styles-dir" as *;
 
-main {
+.main {
   @include main;
 }
 
@@ -8,5 +8,5 @@ main {
   @include flex-center;
   width: 80%;
   margin: 0 auto;
-  background-color: blue;
+  margin-top:1rem;
 }
