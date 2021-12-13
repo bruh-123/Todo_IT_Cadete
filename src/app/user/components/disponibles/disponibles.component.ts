@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { tap } from 'rxjs';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { Viaje } from '../../interfaces/viaje';
 import { ViajesService } from '../../services/viajes.service';
@@ -10,15 +11,16 @@ import { ViajesService } from '../../services/viajes.service';
 })
 export class DisponiblesComponent implements OnInit {
   @Input() viajes: Viaje[] = [];
+  isLoading: boolean = false;
+
   constructor(
     private viajesService: ViajesService,
     private alertService: AlertService
   ) {}
 
   aceptarViaje(idTravel: number, status: number) {
-    this.viajesService.aceptarViaje(idTravel, status).subscribe({
-      next: (resp) => {
-        console.log(resp);
+    this.viajesService.postViaje(idTravel, status + 1).subscribe({
+      next: () => {
         this.alertService.success('Viaje aceptado!');
       },
       error: (e) => {
@@ -27,5 +29,37 @@ export class DisponiblesComponent implements OnInit {
       },
     });
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.viajesService.refreshDisponibles$.subscribe(() =>
+      this.getDisponibles()
+    );
+    this.getDisponibles();
+  }
+  getDisponibles() {
+    this.isLoading = true;
+    console.log('getting disponibles');
+
+    this.viajesService
+      .getDisponibles()
+      .pipe(tap(() => this.viajesService.refreshDisponibles$.next()))
+      .subscribe({
+        next: (resp) => {
+          this.viajes = [...resp[0], ...resp[1]];
+          this.isLoading = false;
+        },
+        error: (e) => {
+          console.log(e.error);
+          this.alertService.failure(e.error);
+        },
+      });
+  }
+  // this.viajesService.getDisponibles().subscribe({
+  //   next: (resp) => {
+  //     this.viajes = [...resp[0], ...resp[1]];
+  //   },
+  //   error: (e) => {
+  //     console.log(e.error);
+  //     this.alertService.failure(e.error);
+  //   },
+  // });
 }

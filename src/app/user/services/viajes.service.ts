@@ -11,16 +11,21 @@ export class ViajesService {
   private _userLoged = JSON.parse(localStorage.getItem('userLoged')!);
   private _refreshDisponibles$ = new Subject<void>();
   private _refreshAceptados$ = new Subject<void>();
-
+  private _refreshFinalizados$ = new Subject<void>();
+  
+  get userLoged$() {
+    return this._userLoged;
+  }
   get refreshDisponibles$() {
     return this._refreshDisponibles$;
   }
   get refreshAceptados$() {
-    return this._refreshDisponibles$;
+    return this._refreshAceptados$;
   }
-  get userLoged$() {
-    return this._userLoged;
+  get refreshFinalizados$() {
+    return this._refreshFinalizados$;
   }
+  
 
   getViajes(status: number): Observable<Viaje[]> {
     return this.http.get<Viaje[]>('/api/Travel/2/' + status);
@@ -46,17 +51,16 @@ export class ViajesService {
   //     );
   // }
 
-  aceptarViaje(idTravel: number, status: number): Observable<Viaje> {
+  postViaje(idTravel: number, status: number,reasigned:boolean=false): Observable<Viaje> {
     return this.http
       .post<Viaje>(
         `/api/Travel?travelId=${idTravel}&statusTravel=${
-          status + 1
+          status
         }&userOperation=2&cadeteId=${
           this._userLoged.id
-        }&isReasigned=false&observations=Este%es%mio`,
+        }&isReasigned=${reasigned}&observations=Este%es%mio`,
         idTravel
       )
-      .pipe(tap(() => this._refreshDisponibles$.next()));
   }
 
   getAceptados() {
@@ -65,44 +69,6 @@ export class ViajesService {
     let aceptados3 = this.getViajes(3);
     let aceptados7 = this.getViajes(7);
     return forkJoin([aceptados2, aceptados6,aceptados3,aceptados7]);
-  }
-
-  rechazarViaje(idTravel: number, status: number): Observable<Viaje> {
-    return this.http
-      .post<Viaje>(
-        `/api/Travel?travelId=${idTravel}&statusTravel=${
-          status - 1
-        }&userOperation=2&cadeteId=${
-          this._userLoged.id
-        }&isReasigned=true&observations=Este%ya%no%es%mio`,
-        idTravel
-      )
-      .pipe(tap(() => this.refreshAceptados$.next()));
-  }
-
-  retirarEquipo(idTravel: number, status: number) {
-    return this.http
-      .post<Viaje>(
-        `/api/Travel?travelId=${idTravel}&statusTravel=${
-          status + 1
-        }&userOperation=2&cadeteId=${
-          this._userLoged.id
-        }&isReasigned=true&observations=Este%ya%no%es%mio`,
-        idTravel
-      )
-      .pipe(tap(() => this.refreshAceptados$.next()));
-  }
-  entregarEquipo(idTravel: number, status: number) {
-    return this.http
-      .post<Viaje>(
-        `/api/Travel?travelId=${idTravel}&statusTravel=${
-          status + 1
-        }&userOperation=2&cadeteId=${
-          this._userLoged.id
-        }&isReasigned=true&observations=Este%ya%no%es%mio`,
-        idTravel
-      )
-      .pipe(tap(() => this.refreshAceptados$.next()));
   }
 
   getFinalizados() {

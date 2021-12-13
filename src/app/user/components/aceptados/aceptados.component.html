@@ -1,5 +1,6 @@
-<ng-container *ngFor="let viaje of viajes">
-  <mat-card>
+<app-spinner *ngIf="isLoading" [diameter]="100"></app-spinner>
+<ng-container *ngIf="!isLoading">
+  <mat-card *ngFor="let viaje of viajes">
     <ul>
       <li>
         <p>
@@ -32,6 +33,8 @@
         *ngIf="viaje.lastStatusTravel == 2 || viaje.lastStatusTravel == 6"
         mat-raised-button
         color="warn"
+        [disabled]="loading"
+        [class.spinner]="loading"
         (click)="rechazarViaje(viaje.id, viaje.lastStatusTravel)"
       >
         rechazar
@@ -40,7 +43,7 @@
         *ngIf="viaje.lastStatusTravel == 2 || viaje.lastStatusTravel == 6"
         mat-raised-button
         color="primary"
-        (click)="retirar(viaje.id,viaje.lastStatusTravel)"
+        (click)="avanzar(viaje.id, viaje.lastStatusTravel)"
       >
         retirar
       </button>
@@ -48,7 +51,7 @@
         *ngIf="viaje.lastStatusTravel == 3 || viaje.lastStatusTravel == 7"
         mat-raised-button
         color="primary"
-        (click)="finalizar(viaje.id,viaje.lastStatusTravel)"
+        (click)="avanzar(viaje.id, viaje.lastStatusTravel)"
       >
         finalizar
       </button>

@@ -1,6 +1,7 @@
 <app-header></app-header>
-<ng-container *ngFor="let viaje of viajes">
-  <mat-card>
+<app-spinner *ngIf="isLoading" [diameter]="100"></app-spinner>
+<ng-container *ngIf="!isLoading">
+  <mat-card *ngFor="let viaje of viajes">
     <ul>
       <li>
         <p>
@@ -30,4 +31,3 @@
     </ul>
   </mat-card>
 </ng-container>
-

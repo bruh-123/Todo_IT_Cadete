@@ -4,24 +4,16 @@
     <mat-tab label="Disponibles">
       <ng-template matTabContent>
         <div class="container">
-          <app-spinner *ngIf="isLoading"></app-spinner>
           <!-- VIAJES DISPONIBLES -->
-          <app-disponibles
-            *ngIf="!isLoading"
-            [viajes]="viajesDisponibles1"
-          ></app-disponibles>
+          <app-disponibles></app-disponibles>
         </div>
       </ng-template>
     </mat-tab>
     <mat-tab label="Aceptados">
       <ng-template matTabContent>
         <div class="container">
-          <app-spinner *ngIf="isLoading"></app-spinner>
           <!-- VIAJES ACEPTADOS -->
-          <app-aceptados
-            *ngIf="!isLoading"
-            [viajes]="viajesAceptados"
-          ></app-aceptados>
+          <app-aceptados></app-aceptados>
         </div>
       </ng-template>
     </mat-tab>

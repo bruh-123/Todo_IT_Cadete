@@ -6,6 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./spinner.component.scss']
 })
 export class SpinnerComponent implements OnInit {
+  @Input() diameter: number = 50;
   constructor() { }
 
   ngOnInit(): void {

@@ -9,14 +9,18 @@ import { ViajesService } from '../../services/viajes.service';
 })
 export class HistorialComponent implements OnInit {
   viajes: Viaje[] = [];
+  isLoading: boolean = false;
+
   constructor(private viajesService: ViajesService) {}
 
   ngOnInit(): void {
     this.getViajes();
-    console.log(this.viajes);
   }
 
   getViajes() {
+    this.isLoading = true;
+    console.log('getting finalizados');
+
     this.viajesService.getFinalizados().subscribe({
       next: (resp) => {
         this.viajes = [...resp[0], ...resp[1], ...resp[2]];
@@ -29,6 +33,7 @@ export class HistorialComponent implements OnInit {
           }
           return false;
         });
+        this.isLoading = false;
       },
     });
   }
